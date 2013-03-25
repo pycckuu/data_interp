@@ -1,5 +1,6 @@
 
 import os
+from subprocess import call
 # import matplotlib.pyplot
 
 
@@ -38,6 +39,14 @@ def baseline(data):
 x = read('3-100ppb.txt')
 print x
 print baseline(x)
-os.system("echo 'hello world'")
+fout = open("results.dat","w")
+f = open('3-100ppb.txt')
+stream = os.popen(" cfityk -I -q 3-100ppb.txt '=->exec open_2peak_guess.fit'").read()
+print stream
 
+# os.system("cfityk open_2peak_guess.fit" > fout)
+# return_code =call("cfityk open_2peak_guess.fit", shell=True)
+# print return_code
+
+# os.system("@0 < '/home/pycckuu/Documents/git/data_interp/6-10ppm.txt'")
 # matplotlib.pyplot.show()
