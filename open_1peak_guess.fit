@@ -7,7 +7,4 @@ $mean_y_r={(y[$len_x]+y[$len_x-1]+y[$len_x-2])/3}
 Y = y - %bg0(x)
 guess LogNormalA
 fit
-guess LogNormalA
-fit
 info prop %_1
-info prop %_2
