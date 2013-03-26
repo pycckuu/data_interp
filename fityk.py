@@ -1,5 +1,10 @@
 import os
 
+def full_algo(str_matching_files_names):
+	files = finding_matching_files_to_str(str_matching_files_names)
+	list_of_commands = making_list_of_commands_from_filenames(files)
+	return list_of_commands
+
 def finding_matching_files_to_str(string):
 	files = []
 	for dirname, dirnames, filenames in os.walk('.'):
@@ -21,12 +26,28 @@ def finding_matching_files_to_str(string):
 	        dirnames.remove('.git')
 	return files
 
+def making_list_of_commands_from_filenames(filenames):
+	list_of_commands = []
+	for filename in filenames:
+		list_of_commands.append(makimg_command_from_string(filename))
+	return list_of_commands
+
 def makimg_command_from_string(string):
 	return "cfityk -I -q "+string+" '=->exec open_2peak_guess.fit'"
 	
+def executing_command(command):
+	stream = os.popen(command).read()
+	return stream
 
-print finding_matching_files_to_str("")
-print makimg_command_from_string("file")
+def analise_stream(stream):
+	print stream
+
+
+
+print full_algo("ppm")
+
+# print finding_matching_files_to_str("")
+# print makimg_command_from_string("file")
 
 
 
