@@ -1,5 +1,6 @@
 import os
 import re
+import datetime
 
 def full_algo(str_matching_files_names):
 	files = finding_matching_files_to_str(str_matching_files_names)
@@ -7,7 +8,7 @@ def full_algo(str_matching_files_names):
 	#just for 1 command
 	streams = exec_commands(files)
 	par_streams = parsing_streams(streams)
-	print par_streams
+	output(par_streams)
 	return par_streams
 
 def finding_matching_files_to_str(string):
@@ -79,6 +80,15 @@ def parsing_stream(string):
 	areas = [sp[i+6] for i,l in enumerate(sp) if l=='area']
 	return [filename,centers,heights,areas]
 
+def output(parsed_streams):
+	fout = open("results.dat","w")
+	now = datetime.datetime.now()
+	fout.write('This file was created '+str(now)+'\n')
+	for stream in parsed_streams:
+		output = 'The file: '+ str(stream[0][0]) + ' has peaks at ' +str(stream[1]) + '\nwith heights:'  +str(stream[2])
+
+		fout.write('%s\n' %output)
+	fout.close()
 
 full_algo("pp")
 
@@ -88,7 +98,7 @@ full_algo("pp")
 
 
 
-fout = open("results.dat","w")
+
 f = open('3-100ppb.txt')
 
 # stream = os.popen("cfityk -I -q 3-100ppb.txt '=->exec open_2peak_guess.fit'").read()
