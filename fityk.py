@@ -3,7 +3,9 @@ import os
 def full_algo(str_matching_files_names):
 	files = finding_matching_files_to_str(str_matching_files_names)
 	list_of_commands = making_list_of_commands_from_filenames(files)
-	return list_of_commands
+	#just for 1 command
+	streams = exec_commands(list_of_commands)
+	return streams
 
 def finding_matching_files_to_str(string):
 	files = []
@@ -35,6 +37,13 @@ def making_list_of_commands_from_filenames(filenames):
 def makimg_command_from_string(string):
 	return "cfityk -I -q "+string+" '=->exec open_2peak_guess.fit'"
 	
+def exec_commands(list_of_commands):
+	return_streams =[]
+	for command in list_of_commands:
+		return_stream = executing_command(command)
+		return_streams.append(return_stream)
+	return return_streams
+
 def executing_command(command):
 	stream = os.popen(command).read()
 	return stream
@@ -44,7 +53,7 @@ def analise_stream(stream):
 
 
 
-print full_algo("ppm")
+print full_algo("10ppm")
 
 # print finding_matching_files_to_str("")
 # print makimg_command_from_string("file")
