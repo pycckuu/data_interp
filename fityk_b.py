@@ -25,9 +25,7 @@ def finding_matching_files_to_str(string):
 	        # print filename
 	        
 	        if string in filename:
-	        	if len(dirname)>1:
-	        		files.append(dirname[4:]+'/'+filename)
-	        	else:
+	        	if len(dirname)==1:
 	        		files.append(filename)
 
 	    # Advanced usage:
@@ -35,7 +33,11 @@ def finding_matching_files_to_str(string):
 	    if '.git' in dirnames:
 	        # don't go into any .git directories.
 	        dirnames.remove('.git')
-	print files
+	if len(files)<1:
+		print "There is no files with this mask"
+	print "Matched files: "
+	for file in files:
+		print file
 	return files
 
 # def making_list_of_commands_from_filenames(filenames):
@@ -46,13 +48,15 @@ def finding_matching_files_to_str(string):
 
 def makimg_command_from_string(string,b=False):
 	if b == False:
-		return "cfityk -I -q "+string+" '=->exec open_2peak_guess.fit'"
+		return "cfityk -I -q '"+string+"' '=->exec open_2peak_guess.fit'"
 	elif b == True:
-		return "cfityk -I -q "+string+" '=->exec open_1peak_guess.fit'"
+		return "cfityk -I -q '"+string+"' '=->exec open_1peak_guess.fit'"
+
 def exec_commands(filenames):
 	return_streams =[]
 	for filename in filenames:
 		return_stream = executing_command(makimg_command_from_string(filename))
+		# print return_stream
 		k = parsing_stream(return_stream)
 		if abs(float(k[1][1])-float(k[1][0])) < 30:
 			return_stream  = executing_command(makimg_command_from_string(filename,True))
@@ -66,10 +70,9 @@ def parsing_streams(streams):
 	return parsing_streams
 
 def executing_command(command):
+	# print "executing ",command
 	stream = os.popen(command).read()
 	return stream
-
-
 
 def parsing_stream(string):
 	sp = string.split()
@@ -85,10 +88,12 @@ def output(parsed_streams):
 	now = datetime.datetime.now()
 	fout.write('This file was created '+str(now)+'\n')
 	for stream in parsed_streams:
-		output = 'The file: '+ str(stream[0][0]) + ' has peaks at ' +str(stream[1]) + '\nwith heights:'  +str(stream[2])
+		output = ''+str(stream[0][0]) + ' has peaks at ' +str(stream[1]) + '\nwith heights:'  +str(stream[2])
 
 		fout.write('%s\n' %output)
 	fout.close()
+	print "\n", output
+	print "\nThis results were saved in results.dat\n"
 
 full_algo("pp")
 
@@ -99,7 +104,6 @@ full_algo("pp")
 
 
 
-f = open('3-100ppb.txt')
 
 # stream = os.popen("cfityk -I -q 3-100ppb.txt '=->exec open_2peak_guess.fit'").read()
 # print stream
