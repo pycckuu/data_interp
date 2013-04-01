@@ -1,0 +1,12 @@
+('C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\fityk\\build\\pyi.win32\\fityk\\out00-PKG.pkg',
+ {'BINARY': 1,
+  'DATA': 1,
+  'EXECUTABLE': 1,
+  'EXTENSION': 1,
+  'PYMODULE': 1,
+  'PYSOURCE': 1},
+ [('out00-PYZ.pyz', 'C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\fityk\\build\\pyi.win32\\fityk\\out00-PYZ.pyz', 'PYZ'), ('iu', 'C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\PyInstaller\\loader\\iu.pyc', 'PYMODULE'), ('struct', 'c:\\Python27\\lib\\struct.pyc', 'PYMODULE'), ('archive', 'C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\PyInstaller\\loader\\archive.pyc', 'PYMODULE'), ('_pyi_bootstrap', 'C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\support\\_pyi_bootstrap.py', 'PYSOURCE'), ('carchive', 'C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\PyInstaller\\loader\\carchive.py', 'PYSOURCE'), ('pyi_rth_encodings', 'C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\support/rthooks/pyi_rth_encodings.py', 'PYSOURCE'), ('fityk', 'fityk.py', 'PYSOURCE'), ('fityk.exe.manifest', 'C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\fityk\\build\\pyi.win32\\fityk\\fityk.exe.manifest', 'BINARY')],
+ 1,
+ None,
+ True,
+ 0)

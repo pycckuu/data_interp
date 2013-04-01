@@ -1,0 +1,10 @@
+('C:\\data_interp\\pyinstaller-2.0\\pyinstaller-2.0\\fityk\\build\\pyi.win32\\fityk\\fityk.exe',
+ True,
+ False,
+ None,
+ None,
+ [],
+ None,
+ True,
+ 0,
+ 1364413963L)
